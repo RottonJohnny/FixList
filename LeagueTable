@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>Sport Bet</title>
+<style>
+
+body {
+background-color:lightgray;
+}
+
+hr {
+border-width:3px;
+margin:1px;
+width:400px;
+}
+
+h1 {
+color:#FF3333;
+margin:1px;
+font-family:sans-serif;
+}
+
+table {
+border:groove 5px grey;
+border-radius:10px;
+}
+
+th {
+text-align:center;
+border:groove 3px orange;
+border-radius:10px;
+color:black;
+}
+
+th#team {
+width:100px;
+}
+
+td {
+text-align:center;
+border:groove 3px brown;
+border-radius:10px;
+width:60px;
+height:20px;
+}
+
+
+</style>
+</head>
+<body>
+<center>
+<hr><hr>
+<h1>Sport Bet</h1>
+<hr><hr><br>
+<table id='league'>
+<tr>
+<th id='team'>Team</th><th>Played</th>
+<th>Won</th><th>Lost</th><th>Drawn</th>
+<th>For</th><th>Against</th>
+<th>Points</th>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td>
+<td></td>
+</tr>
+</table>
+<br>
+<table id='fixt'>
+<tr>
+<td></td><td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td>
+<td></td><td></td><td></td>
+<td></td><td></td><td></td>
+</tr>
+</table>
+
+</center>
+
+</body>
+
+<script>
+
+teams=new Array();
+
+teams[0]=['Arsenal',0,0,0,0,0,0,0];
+teams[1]=['Aston Villa',0,0,0,0,0,0,0];
+teams[2]=['Chelsea',0,0,0,0,0,0,0];
+teams[3]=['Everton',0,0,0,0,0,0,0];
+teams[4]=['Liverpool',0,0,0,0,0,0,0];
+teams[5]=['Man City',0,0,0,0,0,0,0];
+teams[6]=['Man United',0,0,0,0,0,0,0];
+teams[7]=['Newcastle',0,0,0,0,0,0,0];
+teams[8]=['Southampton',0,0,0,0,0,0,0];
+teams[9]=['Stoke City',0,0,0,0,0,0,0];
+
+function popTable() {
+var i,j;
+var r=league.rows;
+for (i=1;i<r.length;i++) 
+for (j=0;j<r[i].cells.length;j++) 
+r[i].cells[j].textContent=teams[i-1][j];
+}
+
+popTable();
+
+function makeFixtures() {
+var i,j;
+var wks=new Array();
+var tmp=new Array();
+var tc=0,ct=0;
+for (i=ct+1;i<10-ct;i++) {tmp[tc++]=''+ct+i;tmp[tc++]=''+i+ct;}
+//wks[ct]=shuffle(tmp);
+wks[ct]=tmp;
+return wks[0];
+}
+
+function rInt(n) {
+return Math.floor(Math.random()*n);
+}
+
+function shuffle(arr) {
+var i,r=new Array();
+for (i=0;i<arr.length;i++) r.push(arr.splice(rInt(arr.length),1));
+return r;
+}
+
+fix=makeFixtures();
+
+for (i=0;i<9;i++)
+for (j=0;j<2;j++) {
+str='{'+fix[j*9+i]+'}';
+fixt.rows[j].cells[i].innerHTML=str;
+}
+
+
+</script>
+
+</html>
